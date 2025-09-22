@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Te Amo</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #fef6e4, #f9dcc4, #fec89a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cascadia Code', serif;
+    }
+
+    h1 {
+      position: absolute;
+      color: #5a3e36;
+      font-size: 4em;
+      z-index: 10;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+      font-family: "Cascadia Code", normal;
+      letter-spacing: 3px;
+    }
+
+    .sunflower {
+      position: absolute;
+      top: -100px;
+      width: 60px;
+      height: 60px;
+      background-image: url('https://mercadojamaica.com/cdn/shop/files/arreglo-floral-m4215-1_a21f7c80-5cdc-4562-a346-a2f21821bd0d.webp?v=1747857955.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall 8s linear forwards;
+    }
+
+    /* Caída con oscilación */
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) translateX(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(25vh) translateX(-20px) rotate(-15deg);
+      }
+      50% {
+        transform: translateY(50vh) translateX(20px) rotate(10deg);
+      }
+      75% {
+        transform: translateY(75vh) translateX(-15px) rotate(-5deg);
+      }
+      100% {
+        transform: translateY(110vh) translateX(0) rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Te amo</h1>
+
+  <script>
+    function createSunflower() {
+      const sunflower = document.createElement("div");
+      sunflower.classList.add("sunflower");
+
+      // posición horizontal aleatoria
+      sunflower.style.left = Math.random() * window.innerWidth + "px";
+
+      // duración aleatoria de la caída
+      const duration = 6 + Math.random() * 5;
+      sunflower.style.animationDuration = duration + "s";
+
+      document.body.appendChild(sunflower);
+
+      // eliminar después de caer
+      setTimeout(() => {
+        sunflower.remove();
+      }, duration * 1000);
+    }
+
+    // generar girasoles cada 400ms
+    setInterval(createSunflower, 400);
+  </script>
+</body>
+</html>
